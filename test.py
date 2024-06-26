@@ -12,20 +12,20 @@ def fcn_yd1(k):
         return x
     
 def fcn_yd2(k):
-    x = (2 * np.pi /10 * np.cos(2 * np.pi * k / 10)) 
-    if x < -0.4:
-        return -0.4
-    elif x > 0.4:
-        return 0.4
+    x = (2 * np.pi /7 * np.cos(2 * np.pi * k / 7)) 
+    if x < -0.6:
+        return -0.6
+    elif x > 0.6:
+        return 0.6
     else:
         return x
     
 def fcn_yd3(k):
-    x = (2 * np.pi /10 * np.cos(2 * np.pi * k / 10)) 
-    if x < -0.4:
-        return -0.4
-    elif x > 0.4:
-        return 0.4
+    x = (2 * np.pi /5 * np.cos(2 * np.pi * k / 5)) 
+    if x < -0.8:
+        return -0.8
+    elif x > 0.8:
+        return 0.8
     else:
         return x
 
