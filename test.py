@@ -41,15 +41,41 @@ n = 10
 
 # Initialize yd
 yd1 = np.zeros(n + 1)
+yd2 = np.zeros(n + 1)
+yd3 = np.zeros(n + 1)
 
 for k in range(n + 1):
     yd1[k] = fcn_yd1(k)
+    yd2[k] = fcn_yd2(k)
+    yd3[k] = fcn_yd3
 
-# Plot results
-plt.plot(yd1, 'k-', linewidth=1.5, label='$y_d(k)$')
-plt.xlabel('k')
-plt.ylabel('$y_d$')
-plt.title('yd over iterations')
-plt.legend()
-plt.grid(True)
+# Plot results using subplots
+fig, axs = plt.subplots(3, 1, figsize=(10, 8))
+
+# Plot yd1
+axs[0].plot(yd1, 'k-', linewidth=1.5, label='$y_d1(k)$')
+axs[0].set_xlabel('k')
+axs[0].set_ylabel('$y_d1$')
+axs[0].set_title('yd1 over iterations')
+axs[0].legend()
+axs[0].grid(True)
+
+# Plot yd2
+axs[1].plot(yd2, 'r-', linewidth=1.5, label='$y_d2(k)$')
+axs[1].set_xlabel('k')
+axs[1].set_ylabel('$y_d2$')
+axs[1].set_title('yd2 over iterations')
+axs[1].legend()
+axs[1].grid(True)
+
+# Plot yd3
+axs[2].plot(yd3, 'b-', linewidth=1.5, label='$y_d3(k)$')
+axs[2].set_xlabel('k')
+axs[2].set_ylabel('$y_d3$')
+axs[2].set_title('yd3 over iterations')
+axs[2].legend()
+axs[2].grid(True)
+
+# Adjust layout and show the plot
+plt.tight_layout()
 plt.show()
