@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Define the function fcn
-def fcn(k):
+def fcn_yd1(k):
     x = (2 * np.pi * np.cos(2 * np.pi * k / 10)) / 10
     if x < -0.4:
         return -0.4
@@ -12,9 +12,6 @@ def fcn(k):
         return x
 
 # Parameters
-L = np.array([[1, 0, 0, -1], [-1, 2, -1, 0], [0, -1, 1, 0], [-1, 0, -1, 2]])
-D = np.array([[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]])
-
 # Step Factor Initializations
 rho = 0.3
 eta = 1
@@ -28,7 +25,7 @@ n = 10
 yd1 = np.zeros(n + 1)
 
 for k in range(n + 1):
-    yd1[k] = fcn(k)
+    yd1[k] = fcn_yd1(k)
 
 # Plot results
 plt.plot(yd1, 'k-', linewidth=1.5, label='$y_d(k)$')
