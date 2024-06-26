@@ -10,6 +10,24 @@ def fcn_yd1(k):
         return 0.4
     else:
         return x
+    
+def fcn_yd2(k):
+    x = (2 * np.pi /10 * np.cos(2 * np.pi * k / 10)) 
+    if x < -0.4:
+        return -0.4
+    elif x > 0.4:
+        return 0.4
+    else:
+        return x
+    
+def fcn_yd3(k):
+    x = (2 * np.pi /10 * np.cos(2 * np.pi * k / 10)) 
+    if x < -0.4:
+        return -0.4
+    elif x > 0.4:
+        return 0.4
+    else:
+        return x
 
 # Parameters
 # Step Factor Initializations
