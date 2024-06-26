@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # Define the function fcn
 def fcn_yd1(k):
-    x = (2 * np.pi /10 * np.cos(2 * np.pi * k / 10)) 
+    x = (2 * np.pi  * np.cos(2 * np.pi * k / 10)) 
     if x < -0.4:
         return -0.4
     elif x > 0.4:
@@ -12,7 +12,7 @@ def fcn_yd1(k):
         return x
     
 def fcn_yd2(k):
-    x = (2 * np.pi /7 * np.cos(2 * np.pi * k / 7)) 
+    x = (2 * np.pi  * np.cos(2 * np.pi * k / 7)) 
     if x < -0.6:
         return -0.6
     elif x > 0.6:
@@ -21,7 +21,7 @@ def fcn_yd2(k):
         return x
     
 def fcn_yd3(k):
-    x = (2 * np.pi /5 * np.cos(2 * np.pi * k / 5)) 
+    x = (2 * np.pi  * np.cos(2 * np.pi * k / 5)) 
     if x < -0.8:
         return -0.8
     elif x > 0.8:
@@ -47,7 +47,7 @@ yd3 = np.zeros(n + 1)
 for k in range(n + 1):
     yd1[k] = fcn_yd1(k)
     yd2[k] = fcn_yd2(k)
-    yd3[k] = fcn_yd3
+    yd3[k] = fcn_yd3(k)
 
 # Plot results using subplots
 fig, axs = plt.subplots(3, 1, figsize=(10, 8))
