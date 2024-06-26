@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # Define the function fcn
 def fcn_yd1(k):
-    x = (2 * np.pi * np.cos(2 * np.pi * k / 10)) / 10
+    x = (2 * np.pi /10 * np.cos(2 * np.pi * k / 10)) 
     if x < -0.4:
         return -0.4
     elif x > 0.4:
