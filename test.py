@@ -29,9 +29,20 @@ def fcn_yd3(k):
         return 0.8
     else:
         return x
-    
-def umk(k):
-    
+
+def fcn_phi1(k):
+    for k in range(n):
+       
+        if k == 1:
+            x = 2
+            return x[1]   
+        elif k == 2:
+            x = phi1[]
+
+def fcn_umk(k):
+    umk = umk[k-1] + ((rho * np.dot(phi2[k].T *(yd1[k+1]) - y[k] - phi1[k] *  y[k] - y[k-1])))
+    return umk
+
 
 # Parameters
 # Step Factor Initializations
@@ -51,12 +62,17 @@ yd3 = np.zeros(n + 1)
 #Initialize umk
 umk = np.zeros(n + 1)
 
+# Define phi as arrays
+phi1 = np.zeros((n, 1))
+phi2 = np.zeros((n, 1))
 
 
 for k in range(n + 1):
     yd1[k] = fcn_yd1(k)
     yd2[k] = fcn_yd2(k)
     yd3[k] = fcn_yd3(k)
+
+    umk[k] = fcn_umk(k)
 
 # Plot results using subplots
 fig, axs = plt.subplots(3, 1, figsize=(10, 8))
