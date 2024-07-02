@@ -37,7 +37,7 @@ def fcn_phi1(k):
             x = 2
             return x[1]   
         elif k == 2:
-            x = phi1[]
+            x = phi1[k-1] + eta * ( y[k] - 0 -(phi1[k-1] * y[k-1] - 0) - phi2[k-1] * np.dot((umk[k-1] - 0).T ) ) * np.dot((y[k-1] - 0).T) 
 
 def fcn_umk(k):
     umk = umk[k-1] + ((rho * np.dot(phi2[k].T *(yd1[k+1]) - y[k] - phi1[k] *  y[k] - y[k-1])))
