@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 # Define the function fcn
 def fcn_yd1(k):
     x = (2 * np.pi  * np.cos(2 * np.pi * k / 10)) 
@@ -28,6 +29,9 @@ def fcn_yd3(k):
         return 0.8
     else:
         return x
+    
+def umk(k):
+    
 
 # Parameters
 # Step Factor Initializations
@@ -43,6 +47,11 @@ n = 10
 yd1 = np.zeros(n + 1)
 yd2 = np.zeros(n + 1)
 yd3 = np.zeros(n + 1)
+
+#Initialize umk
+umk = np.zeros(n + 1)
+
+
 
 for k in range(n + 1):
     yd1[k] = fcn_yd1(k)
@@ -78,4 +87,4 @@ axs[2].grid(True)
 
 # Adjust layout and show the plot
 plt.tight_layout()
-plt.show()
+plt.show() 
