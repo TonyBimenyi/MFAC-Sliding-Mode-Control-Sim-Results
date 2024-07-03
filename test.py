@@ -16,7 +16,7 @@ def fcn_yd3(k):
 
 def fcn_phi1(k):
     if k == 1:
-        return 2
+        return 0
     elif k == 2:
         return phi1[k-1] + eta * (y1[k] - 0 - (phi1[k-1] * y1[k-1] - 0) - phi2[k-1] * (umk1[k-1] - 0)) * (y1[k-1] - 0) / (mu + abs(y1[k-1]-0)**2 + abs(umk1[k-1]-0)**2)
     else:
@@ -24,7 +24,7 @@ def fcn_phi1(k):
 
 def fcn_phi2(k):
     if k == 1:
-        return 2
+        return 0
     elif k == 2:
         return phi2[k-1] + eta * (y2[k] - 0 - (phi2[k-1] * y2[k-1] - 0) - phi2[k-1] * (umk2[k-1] - 0)) * (y2[k-1] - 0) / (mu + abs(y2[k-1]-0)**2 + abs(umk2[k-1]-0)**2)
     else:
@@ -32,35 +32,37 @@ def fcn_phi2(k):
 
 def fcn_phi3(k):
     if k == 1:
-        return 2
+        return 0
     elif k == 2:
         return phi3[k-1] + eta * (y3[k] - 0 - (phi3[k-1] * y3[k-1] - 0) - phi3[k-1] * (umk3[k-1] - 0)) * (y3[k-1] - 0) / (mu + abs(y3[k-1]-0)**2 + abs(umk3[k-1]-0)**2)
     else:
         return phi3[k-1] + eta * (y3[k] - y3[k-1] - (phi3[k-1] * y3[k-1] - y3[k-2]) - phi3[k-1] * (umk3[k-1] - umk3[k-2])) * (y3[k-1] - y3[k-2]) / (mu + abs(y3[k-1]-y3[k-2])**2 + abs(umk3[k-1]-umk3[k-2])**2)
 
 def fcn_umk1(k):
-    if k < n:
-        return umk1[k-1] + (rho * (phi2[k].T * (yd1[k+1]) - y1[k] - phi1[k] * y1[k] - y1[k-1]))
+    if k == 1:
+       return 0
     else:
-        return umk1[k-1]
+         return umk1[k-1] + (rho * (phi2[k].T * (yd1[k+1]) - y1[k] - phi1[k] * y1[k] - y1[k-1]))
 
 def fcn_umk2(k):
-    if k < n:
-        return umk2[k-1] + (rho * (phi2[k].T * (yd2[k+1]) - y2[k] - phi1[k] * y2[k] - y2[k-1]))
+    
+    if k == 1:
+       return 0
+        
     else:
-        return umk2[k-1]
+        return umk2[k-1] + (rho * (phi2[k].T * (yd2[k+1]) - y2[k] - phi1[k] * y2[k] - y2[k-1]))
 
 def fcn_umk3(k):
-    if k < n:
-        return umk3[k-1] + (rho * (phi2[k].T * (yd3[k+1]) - y3[k] - phi3[k] * y3[k] - y3[k-1]))
+    if k == 1:
+        return 0
     else:
-        return umk3[k-1]
+        return umk3[k-1] + (rho * (phi2[k].T * (yd3[k+1]) - y3[k] - phi3[k] * y3[k] - y3[k-1]))
 
 def fcn_usk1(k):
-    if k < n:
-        return (1 / phi2[k][0] if phi2[k][0] != 0 else 0) * (yd1[k+1]) - phi1[k][0] * y1[k][0] - y1[k-1][0] - y1[k][0] - (1 - 1*T) * yd1[k] - y1[k][0] + epsilon * T * np.sign(yd1[k] - y1[k][0])
+    if k == 0:
+        return 0
     else:
-        return usk1[k-1]
+        return (1 / phi2[k][0] if phi2[k][0] != 0 else 0) * (yd1[k+1]) - phi1[k][0] * y1[k][0] - y1[k-1][0] - y1[k][0] - (1 - 1*T) * yd1[k] - y1[k][0] + epsilon * T * np.sign(yd1[k] - y1[k][0])
 
 def fcn_usk2(k):
     if k < n:
@@ -75,18 +77,17 @@ def fcn_usk3(k):
         return usk3[k-1]
 
 def fcn_u1():
-    return umk1 + gamma @ usk1
+    return umk1 + gamma * usk1
 
 def fcn_u2():
-    return umk2 + gamma @ usk2
+    return umk2 + gamma * usk2
 
 def fcn_u3():
-    return umk3 + gamma @ usk3
+    return umk3 + gamma * usk3
 
 def fcn_y1(k):
-    
     return u1[k][0] + np.sin(y1[k][0])
-    
+
 def fcn_y2(k):
     return u2[k][0] + np.sin(y2[k][0])
 
@@ -153,7 +154,9 @@ for k in range(n):
     usk2[k] = fcn_usk2(k)
     usk3[k] = fcn_usk3(k)
     
-    
+    y1[1] = 0.51
+    y2[1] = 2.5
+    y3[1] = 3.5
     
     y1[k+1] = fcn_y1(k)
     y2[k+1] = fcn_y2(k)
